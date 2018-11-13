@@ -56,11 +56,21 @@
             layers: [osm, bingmaps, googlemaps]
         });
 
+        var iconStyle = new ol.style.Style({
+            image: new ol.style.Icon({
+            anchor: [0.5, 46],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'pixels',
+            src: 'data/point.png'
+            })
+        });
+
         var pontos_pista = new ol.layer.Vector({
             title: 'Pontos da Pista',
+            style: iconStyle,
             source: new ol.source.Vector({
                 url: 'https://raw.githubusercontent.com/marcosroquerosa/sig-pista-caminhada-foz/master/data/poi_pista_caminhada.geojson',
-                format: new ol.format.GeoJSON()
+                format: new ol.format.GeoJSON(),                
             })
         });
 
